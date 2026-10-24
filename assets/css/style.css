@@ -165,6 +165,9 @@ pre.bib{background:var(--bg-3);border:1px solid var(--line);border-radius:10px;p
 .person{align-items:center}
 .avatar.o{background:var(--accent-2)}
 .person b{display:block;font-size:1rem}
+.person b a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.person b a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none}
+.person b a::after{content:"\00a0↗";font-size:.75em;color:var(--ink-3)}
 .person span{display:block;font-size:.84rem;color:var(--ink-2)}
 .person em{display:block;font-size:.78rem;color:var(--ink-3);font-style:normal;margin-top:2px}
 
