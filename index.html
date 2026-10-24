@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MorphoCam — Adding depth to camera trap analyses</title>
+<meta name="description" content="MorphoCam is a NERC-funded University of Oxford project building open-source AI tools that estimate animal distance, body size and 3D shape from camera trap images, for density estimation and morphometrics of unmarked wildlife.">
+<meta property="og:title" content="MorphoCam — Adding depth to camera trap analyses">
+<meta property="og:description" content="Open-source AI pipelines for metric distance, height and 3D morphometrics from wildlife camera traps. University of Oxford (WildCRU &amp; Computer Science), funded by NERC.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://morphocam.github.io/">
+<meta property="og:image" content="https://morphocam.github.io/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MorphoCam home">
+      <img src="assets/img/logo.png" alt="" width="36" height="36">
+      MorphoCam
+    </a>
+    <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul id="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a class="gh" href="https://github.com/Morphocam" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><button class="theme-btn" id="theme" aria-label="Toggle dark mode" title="Toggle dark mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="assets/img/logo.png" alt="MorphoCam logo" width="110" height="110">
+    <div class="kicker">University of Oxford · WildCRU &amp; Department of Computer Science · Funded by NERC</div>
+    <h1>Adding depth to camera trap analyses</h1>
+    <p class="lead">MorphoCam builds open-source AI pipelines that turn ordinary camera trap images into metric measurements: how far away an animal is, how tall it is, and what its body looks like in 3D. The goal is faster, non-invasive density estimation and morphometrics for the unmarked species that most camera trap surveys currently leave behind.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#software">Explore the tools</a>
+      <a class="btn btn-ghost" href="#publications">Read the papers</a>
+      <a class="btn btn-ghost" href="https://github.com/Morphocam" target="_blank" rel="noopener">GitHub organisation ↗</a>
+    </div>
+  </div>
+  <span class="credit">MorphoCam units deployed in Bubye Valley Conservancy, Zimbabwe</span>
+</section>
+
+<div class="wrap">
+  <div class="stats" aria-label="Project at a glance">
+    <div class="stat"><b>2024–2027</b><span>NERC research grant UKRI037</span></div>
+    <div class="stat"><b>4</b><span>peer-reviewed papers &amp; preprints</span></div>
+    <div class="stat"><b>5</b><span>open-source repositories (MIT)</span></div>
+    <div class="stat"><b>127k+</b><span>synchronised RGB–LiDAR frames released</span></div>
+    <div class="stat"><b>3</b><span>field sites in the UK, Zimbabwe &amp; South Africa</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">About the project</div>
+      <h2>Why measure wildlife from camera traps?</h2>
+      <p>Camera traps are one of the most widely used tools in biodiversity monitoring. They are used to estimate population density, assess the outcomes of conservation interventions, and evaluate the health of individual animals. Yet analysing the images is slow, and automation has so far mostly helped with removing empty frames and identifying species.</p>
+      <p>Automated density estimation has only really worked for <em>marked</em> species, such as leopards, whose coat patterns let individuals be recognised. Most animals that walk past a camera are <em>unmarked</em>. For them, distance sampling is the method of choice, but it needs the distance from the camera to each animal, which has traditionally required laborious manual calibration in the field.</p>
+      <p>MorphoCam, led by Oxford's Wildlife Conservation Research Unit (WildCRU) with the Department of Computer Science, is developing a software pipeline that estimates that distance automatically using monocular depth estimation, calibrates it to real-world metres, and extends the same machinery to body measurements and 3D reconstruction. Body size and shape can indicate age and condition, which helps researchers understand the demographic structure and health of a population. Everything is released as open source and is being integrated into the <a href="https://wildeyeconservation.org/" target="_blank" rel="noopener">WildEye Conservation</a> TrapTagger platform so that species classification, distance estimation and measurement form one end-to-end workflow.</p>
+    </div>
+    <figure>
+      <img src="assets/img/field-calibration.jpg" alt="Field team placing calibration markers at known distances in front of a camera trap in African savanna" loading="lazy">
+      <figcaption>Setting up a camera trap and distance calibration markers in the field. Photo: WildCRU.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Approach</div>
+      <h2>Three work packages</h2>
+      <p class="lead">The project combines user research with camera trap practitioners, new computer vision methods, and practical tools that ecologists can run on their own data.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Research community engagement</h3>
+        <p>Consulting camera trap researchers before design begins so the tools solve real bottlenecks in survey workflows, and reporting results back to the community through presentations and open releases.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Advancing depth estimation</h3>
+        <p>Benchmarking and improving monocular depth estimation models for wildlife scenes, developing automated reference-object calibration to metric scale, and collecting synchronised RGB, LiDAR and radar ground truth to validate image-only models at range.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Interfaces for distance sampling &amp; morphometrics</h3>
+        <p>Building user-friendly desktop and command-line tools for manual and automated measurement, pose-based 3D reconstruction of animals, and integrating the outputs into TrapTagger with WildEye Conservation.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">From a photo to metres</h3>
+    <p style="color:var(--ink-2);max-width:70ch">The core MorphoCam pipeline processes every image at a camera station in five steps. No laser rangefinder, calibrated rig or reliable EXIF metadata is required.</p>
+    <div class="pipeline">
+      <div class="step"><h4>Calibrate</h4><p>Photos of reference objects at known distances are used to fit a monotonic curve mapping the depth model's relative output to metric depth, per camera station.</p></div>
+      <div class="step"><h4>Detect</h4><p>Animals (and optionally people and vehicles) are located with MegaDetector, or imported from TrapTagger exports.</p></div>
+      <div class="step"><h4>Segment</h4><p>Segment Anything isolates each animal from background and occluding vegetation with a pixel-accurate mask.</p></div>
+      <div class="step"><h4>Estimate depth</h4><p>A monocular depth model (DPT, MiDaS 3.1, Depth Anything, Depth Pro, Metric3D v2, UniDepthV2 and others) predicts depth for the whole frame.</p></div>
+      <div class="step"><h4>Measure</h4><p>A representative depth per animal is combined with its pixel position and the camera's field of view to give radial distance and height, written to CSV for distance sampling.</p></div>
+    </div>
+
+    <div class="gallery" style="margin-top:36px">
+      <figure class="wide"><img src="assets/img/depth-giraffe.jpg" alt="Three panels: an RGB photo of a giraffe, the predicted monocular depth map, and the LiDAR point cloud ground truth coloured by distance" loading="lazy"><figcaption>Monocular depth estimation on a giraffe: RGB input, predicted depth map, and LiDAR ground truth coloured by distance in metres (WildDepth).</figcaption></figure>
+      <figure><img src="assets/img/rgb-lidar.jpg" alt="RGB frames of an elephant and a lion alongside their LiDAR point clouds with the animal reconstructed in 3D" loading="lazy"><figcaption>Synchronised RGB imagery with LiDAR point-cloud overlays used as metric ground truth.</figcaption></figure>
+      <figure><img src="assets/img/reconstruction.jpg" alt="3D reconstruction results of animals generated from multimodal inputs" loading="lazy"><figcaption>3D reconstruction results from multimodal RGB and LiDAR inputs.</figcaption></figure>
+      <figure><img src="assets/img/morphocam-unit.jpg" alt="Two MorphoCam sensor units built from a Livox LiDAR, a camera trap, a GoPro and a compute module inside a camouflaged wooden frame" loading="lazy"><figcaption>MorphoCam field units: Livox LiDAR, RGB camera, GoPro and a commercial camera trap in camouflaged weatherproof housings.</figcaption></figure>
+      <figure><img src="assets/img/longleat-setup.jpg" alt="Tripod-mounted LiDAR and camera rig recording animals at Longleat Safari Park" loading="lazy"><figcaption>Tripod-mounted RGB and LiDAR rig at Longleat Safari Park, UK.</figcaption></figure>
+      <figure><img src="assets/img/kgalagadi-wildpose.jpg" alt="Vehicle-mounted zoom camera and LiDAR gimbal system in the Kgalagadi Transfrontier Park" loading="lazy"><figcaption>Vehicle-mounted zoom RGB and LiDAR gimbal (WildPose) in the Kgalagadi Transfrontier Park, South Africa.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="software">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Software</div>
+      <h2>Open-source tools</h2>
+      <p class="lead">All MorphoCam code is released under the MIT licence on the <a href="https://github.com/Morphocam" target="_blank" rel="noopener">Morphocam GitHub organisation</a>. Desktop GUIs are provided for Windows, macOS and Linux alongside command-line interfaces for scripted runs.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <div><span class="tag">Flagship</span> <span class="tag ochre">GUI + CLI</span></div>
+        <h3>Depth-Estimation</h3>
+        <p>Official implementation of the <em>Ecological Informatics</em> paper. Turns raw camera trap photos into metric camera-to-animal distances and heights by combining MegaDetector, Segment Anything and a choice of monocular depth backbones with automated reference-object calibration. Outputs per-station CSV files ready for distance-sampling density analysis, plus diagnostic figures.</p>
+        <div class="links">
+          <a class="chip" href="https://github.com/Morphocam/Depth-Estimation" target="_blank" rel="noopener">Repository</a>
+          <a class="chip" href="https://doi.org/10.1016/j.ecoinf.2025.103520" target="_blank" rel="noopener">Paper</a>
+        </div>
+      </div>
+      <div class="card">
+        <div><span class="tag">Integration</span></div>
+        <h3>depth-estimation-traptagger</h3>
+        <p>The depth estimation pipeline packaged for integration with WildEye Conservation's TrapTagger platform, so that distance outputs appear alongside species classifications in an existing camera trap workflow.</p>
+        <div class="links">
+          <a class="chip" href="https://github.com/Morphocam/depth-estimation-traptagger" target="_blank" rel="noopener">Repository</a>
+          <a class="chip" href="https://wildeyeconservation.org/" target="_blank" rel="noopener">TrapTagger</a>
+        </div>
+      </div>
+      <div class="card">
+        <div><span class="tag">Morphometrics</span> <span class="tag ochre">GUI + CLI</span></div>
+        <h3>morpho3D</h3>
+        <p>A desktop application that turns photographs into 3D meshes, putting nine state-of-the-art image-to-3D generators (including TripoSR, TRELLIS and Hunyuan3D) behind one interface. Supports single-image and multi-view input, runs entirely on a local GPU, and exports .glb meshes for morphometric analysis.</p>
+        <div class="links">
+          <a class="chip" href="https://github.com/Morphocam/morpho3D" target="_blank" rel="noopener">Repository</a>
+        </div>
+      </div>
+      <div class="card">
+        <div><span class="tag">Individual ID</span></div>
+        <h3>Animals_Gaits_Analysis</h3>
+        <p>Video-based pipeline for identifying individual animals from how they move. Animals are segmented with SAM, encoded through complementary appearance (ResNet18) and motion (VideoPrism) streams, and clustered by cosine similarity. No collars, tags or handling required.</p>
+        <div class="links">
+          <a class="chip" href="https://github.com/Morphocam/Animals_Gaits_Analysis" target="_blank" rel="noopener">Repository</a>
+          <a class="chip" href="https://arxiv.org/abs/2607.04518" target="_blank" rel="noopener">Preprint</a>
+        </div>
+      </div>
+      <div class="card">
+        <div><span class="tag">Benchmark</span></div>
+        <h3>wilddepth_v2</h3>
+        <p>Code and experiment scripts for WildDepth-v2: radar-to-LiDAR calibration, Doppler motion transfer, metric 3D tracking with a Kalman smoother, and the frozen hidden benchmark for RGB-only distance estimation and RGB + sparse-LiDAR depth completion. Every number in the paper maps to a script and a results file.</p>
+        <div class="links">
+          <a class="chip" href="https://github.com/Morphocam/wilddepth_v2" target="_blank" rel="noopener">Repository</a>
+          <a class="chip" href="https://arxiv.org/abs/2610.31123" target="_blank" rel="noopener">Preprint</a>
+        </div>
+      </div>
+      <div class="card">
+        <figure style="margin:0"><img src="assets/img/depth-gui.jpg" alt="Screenshot of the Depth-Estimation desktop application" loading="lazy" style="border-radius:8px;border:1px solid var(--line)"><figcaption>The Depth-Estimation desktop GUI.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="datasets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Datasets</div>
+      <h2>WildDepth: metric ground truth for wildlife</h2>
+      <p class="lead">Most animal-focused vision models are trained on data without metric scale, which makes image-only methods hard to validate. WildDepth is a multimodal dataset and benchmark suite with synchronised RGB and LiDAR (and, in version 2, imaging radar) recordings of animals from domestic to wild settings. Full details, video galleries and downloads are on the <a href="https://yunshin.github.io/WildDepth/" target="_blank" rel="noopener">WildDepth project page</a>.</p>
+    </div>
+    <div class="table-wrap">
+    <table class="ds-table">
+      <thead><tr><th>Site</th><th>Country</th><th>Content</th><th>Sensors</th><th>Download</th></tr></thead>
+      <tbody>
+        <tr><td><b>Bubye Valley Conservancy</b></td><td>Zimbabwe</td><td>6 species including giraffe, zebra and warthog; 84,700 synchronised frames from stationary MorphoCam units</td><td>RGB + Livox Mid-70 LiDAR</td><td><a href="https://zenodo.org/records/19371340" target="_blank" rel="noopener">Part 1 (46 GB)</a> · <a href="https://zenodo.org/records/19372084" target="_blank" rel="noopener">Part 2 (38 GB)</a></td></tr>
+        <tr><td><b>Longleat Safari Park</b></td><td>United Kingdom</td><td>10+ species with diverse body morphologies in a controlled setting; 42,500 synchronised frames</td><td>RGB + Livox Avia LiDAR</td><td><a href="https://zenodo.org/records/19103277" target="_blank" rel="noopener">v1 (42 GB)</a> · <a href="https://zenodo.org/records/19152060" target="_blank" rel="noopener">v2 Part 1 (38 GB)</a> · <a href="https://zenodo.org/records/19154614" target="_blank" rel="noopener">v2 Part 2 (21 GB)</a></td></tr>
+        <tr><td><b>Kgalagadi Transfrontier Park</b></td><td>South Africa</td><td>Apex predators and large herbivores (lion, cheetah, leopard, springbok, gemsbok) from a 13-day survey with the vehicle-mounted WildPose system</td><td>Zoom RGB + LiDAR</td><td><a href="https://u.pcloud.link/publink/show?code=kZVhY95ZsvWD5u82A5bEHCMM6mF9gLqq62EX" target="_blank" rel="noopener">Raw data</a> · <a href="https://youtube.com/playlist?list=PLB9Pwo4Wnh7XQg2RmqRyzIzcOIjPWBh_O" target="_blank" rel="noopener">Videos</a></td></tr>
+        <tr><td><b>WildDepth-v2 radar subset</b></td><td>United Kingdom</td><td>37 RGB–LiDAR–4D radar sequences (19,716 frames) with per-point Doppler velocity, metric 3D animal trajectories and a hidden benchmark test set</td><td>RGB + LiDAR + imaging radar</td><td><a href="https://arxiv.org/abs/2610.31123" target="_blank" rel="noopener">Preprint</a> · <a href="https://github.com/Morphocam/wilddepth_v2" target="_blank" rel="noopener">Code</a></td></tr>
+        <tr><td><b>Calibration ground truth</b></td><td>United Kingdom</td><td>Ground-truth imagery for validating monocular depth estimation models outdoors, collected at WildCRU's research base at Tubney House, Oxfordshire</td><td>Camera trap RGB</td><td><a href="https://doi.org/10.1016/j.ecoinf.2025.103520" target="_blank" rel="noopener">Described in paper</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Publications</div>
+      <h2>Papers from the project</h2>
+      <p class="lead">Journal articles, conference papers and preprints produced by MorphoCam. A BibTeX file with all entries is available as <a href="papers.bib">papers.bib</a>.</p>
+    </div>
+
+    <article class="pub">
+      <div class="year">2026<small>Preprint</small></div>
+      <div>
+        <h3>WildDepth-v2: A Synchronized RGB–LiDAR–Radar Dataset and Benchmark for Metric Depth, Motion, and Tracking of Wildlife</h3>
+        <div class="authors">Muhammad Aamir, Sangyun Shin, Naoya Muramatsu, Matthew Wijers, Amir Patel, Andrew Loveridge, Andrew Markham</div>
+        <div class="venue">arXiv:2610.31123, October 2026. Journal extension of WildDepth (ECCV 2026).</div>
+        <div class="links">
+          <a class="chip" href="https://arxiv.org/abs/2610.31123" target="_blank" rel="noopener">arXiv</a>
+          <a class="chip" href="https://arxiv.org/pdf/2610.31123" target="_blank" rel="noopener">PDF</a>
+          <a class="chip" href="https://github.com/Morphocam/wilddepth_v2" target="_blank" rel="noopener">Code</a>
+        </div>
+        <details><summary>Abstract</summary><p class="abstract">Measuring animal distance and motion in metric units underpins abundance estimation, morphometrics, and movement ecology, yet monocular video lacks metric scale and wildlife datasets lack metric ground truth. We present WildDepth 2, extending the synchronized RGB-LiDAR WildDepth dataset in three directions. (i) Imaging radar: 37 RGB-LiDAR-4D-radar sequences (19,716 frames) with per-point Doppler velocity and a measured error budget, to our knowledge the first imaging-radar wildlife recordings. (ii) Benchmarking: a frozen, checksummed hidden test set for RGB-only distance estimation and RGB+sparse-LiDAR depth completion, evaluated separately on animal and background pixels. (iii) Motion and tracking: metric 3D trajectories obtained by lifting 2D tracks using LiDAR, radar, or monocular depth. Across 48,723 animal frames, object-level radar calibration improves monocular depth over scene-level LiDAR calibration without requiring LiDAR at inference (AbsRel 0.120 vs. 0.198), although animal-level LiDAR remains more accurate (0.052). Across 431 tracks, once-per-track radar scaling reduces 3D position error four-fold (2.20 to 0.58 m) and distance-sampling detection-function bias from −13% to −2%, matching once-per-track LiDAR calibration. Transferring radar Doppler onto LiDAR produces motion masks 3.7 times denser than radar alone at 72% precision, reduces moving-animal LiDAR accumulation error by 37%, and estimates radial speed (r = 0.60), albeit with approximately 50% underestimation.</p></details>
+        <details><summary>BibTeX</summary><pre class="bib">@article{aamir2026wilddepthv2,
+  title   = {WildDepth-v2: A Synchronized RGB--LiDAR--Radar Dataset and Benchmark for Metric Depth, Motion, and Tracking of Wildlife},
+  author  = {Aamir, Muhammad and Shin, Sangyun and Muramatsu, Naoya and Wijers, Matthew and Patel, Amir and Loveridge, Andrew and Markham, Andrew},
+  journal = {arXiv preprint arXiv:2610.31123},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2610.31123}
+}</pre></details>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="year">2026<small>Conference</small></div>
+      <div>
+        <h3>WildDepth: A Multimodal Dataset for 3D Wildlife Perception and Depth Estimation</h3>
+        <div class="authors">Muhammad Aamir*, Naoya Muramatsu*, Sangyun Shin*, Matthew Wijers, Jia-Xing Zhong, Xinyu Hou, Amir Patel, Andrew Loveridge, Andrew Markham <span style="color:var(--ink-3)">(* equal contribution)</span></div>
+        <div class="venue">Computer Vision – ECCV 2026, Lecture Notes in Computer Science vol. 17042, pp. 40–58. Springer. European Conference on Computer Vision, Malmö, Sweden, 8–12 September 2026.</div>
+        <div class="links">
+          <a class="chip" href="https://doi.org/10.1007/978-3-032-37422-6_3" target="_blank" rel="noopener">DOI 10.1007/978-3-032-37422-6_3</a>
+          <a class="chip" href="https://media.eventhosts.cc/Conferences/ECCV2026/pdfs/13367.pdf" target="_blank" rel="noopener">PDF</a>
+          <a class="chip" href="https://yunshin.github.io/WildDepth/" target="_blank" rel="noopener">Project page</a>
+          <a class="chip" href="#datasets">Dataset</a>
+        </div>
+        <details><summary>Abstract</summary><p class="abstract">Depth estimation and 3D reconstruction have been extensively studied as core topics in computer vision. Starting from rigid objects with relatively simple geometric shapes, such as vehicles, the research has expanded to address general objects, including challenging deformable objects, such as humans and animals. In particular, for the animal, however, the majority of the existing models are trained based on datasets without metric scale, which can help validate image-only models. To address this limitation, we present WildDepth, a multimodal dataset and benchmark suite for depth estimation, behavior detection, and 3D reconstruction from diverse categories of animals ranging from domestic to wild environments with synchronized RGB and LiDAR. Experimental results show that the use of multi-modal data improves depth reliability by up to 10% RMSE, while RGB–LiDAR fusion enhances 3D reconstruction fidelity by 12% in Chamfer distance. By releasing WildDepth and its benchmarks, we aim to foster robust multimodal perception systems that generalize across domains.</p></details>
+        <details><summary>BibTeX</summary><pre class="bib">@inproceedings{aamir2026wilddepth,
+  title        = {WildDepth: A Multimodal Dataset for 3D Wildlife Perception and Depth Estimation},
+  author       = {Aamir, Muhammad and Muramatsu, Naoya and Shin, Sangyun and Wijers, Matthew and Zhong, Jia-Xing and Hou, Xinyu and Patel, Amir and Loveridge, Andrew and Markham, Andrew},
+  booktitle    = {Computer Vision -- ECCV 2026},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {17042},
+  pages        = {40--58},
+  year         = {2026},
+  publisher    = {Springer},
+  doi          = {10.1007/978-3-032-37422-6_3}
+}</pre></details>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="year">2026<small>Preprint</small></div>
+      <div>
+        <h3>A non-invasive video-based method for individual identification of wildlife using gait dynamics</h3>
+        <div class="authors">Muhammad Aamir, Matthew Wijers, Sangyun Shin, Andrew Loveridge, Andrew Markham</div>
+        <div class="venue">arXiv:2607.04518, July 2026. Under review at <em>Methods in Ecology and Evolution</em>.</div>
+        <div class="links">
+          <a class="chip" href="https://arxiv.org/abs/2607.04518" target="_blank" rel="noopener">arXiv</a>
+          <a class="chip" href="https://arxiv.org/pdf/2607.04518" target="_blank" rel="noopener">PDF</a>
+          <a class="chip" href="https://github.com/Morphocam/Animals_Gaits_Analysis" target="_blank" rel="noopener">Code</a>
+        </div>
+        <details><summary>Abstract</summary><p class="abstract">Gait is a distinctive behavioral characteristic that enables non-invasive individual identification without requiring physical interaction with an animal. While gait-based analysis has been extensively studied in humans, its application to wildlife remains limited due to environmental variability and the lack of scalable identification methods. This paper presents a fully automated, video-based pipeline for wildlife gait analysis and individual identification using deep spatiotemporal representation learning. The proposed pipeline uses the Segment Anything Model 3 (SAM3) to generate high-quality RGB and binary silhouette masks, robustly isolating animals from complex natural backgrounds. Segmented video sequences are processed using a convolutional neural network (ResNet18) for spatial feature extraction and a transformer-based video model (VideoPrism) for temporal motion modeling. Both models are fine-tuned using a classification objective and subsequently used as feature extractors to generate discriminative gait representations. Cosine similarity is then used to compare gait signatures, enabling similarity-based clustering of individuals without reliance on physical markings or invasive tagging. Experiments conducted on multi-source wildlife video data across multiple species demonstrate strong intra-individual consistency and clear inter-individual separation. Quantitative results using cosine similarity distributions and silhouette scores confirm the effectiveness of the proposed method. These findings demonstrate that gait dynamics provide a viable, non-invasive approach for individual identification in wildlife and highlight the potential of video-based deep learning pipelines for scalable ecological monitoring.</p></details>
+        <details><summary>BibTeX</summary><pre class="bib">@article{aamir2026gait,
+  title   = {A non-invasive video-based method for individual identification of wildlife using gait dynamics},
+  author  = {Aamir, Muhammad and Wijers, Matthew and Shin, Sangyun and Loveridge, Andrew and Markham, Andrew},
+  journal = {arXiv preprint arXiv:2607.04518},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2607.04518}
+}</pre></details>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="year">2025<small>Journal</small></div>
+      <div>
+        <h3>A robust metric distance and height estimation pipeline for wildlife camera trap imagery</h3>
+        <div class="authors">Muhammad Aamir, Matthew Wijers, Andrew Loveridge, Andrew Markham</div>
+        <div class="venue"><em>Ecological Informatics</em>, Volume 92, 103520, December 2025. Open access (CC BY 4.0).</div>
+        <div class="links">
+          <a class="chip" href="https://doi.org/10.1016/j.ecoinf.2025.103520" target="_blank" rel="noopener">DOI 10.1016/j.ecoinf.2025.103520</a>
+          <a class="chip" href="https://www.sciencedirect.com/science/article/pii/S1574954125005291" target="_blank" rel="noopener">ScienceDirect</a>
+          <a class="chip" href="https://doi.org/10.2139/ssrn.5294551" target="_blank" rel="noopener">SSRN preprint</a>
+          <a class="chip" href="https://github.com/Morphocam/Depth-Estimation" target="_blank" rel="noopener">Code</a>
+        </div>
+        <details><summary>Abstract</summary><p class="abstract">Obtaining accurate metric measurements from 2D images captured by camera traps is valuable for ecological research, particularly population density estimation and morphometric analyses. Traditional methods require extensive manual calibration and image processing, making large-scale studies impractical. In this research study, we present a robust and automated pipeline that integrates monocular depth estimation (MDE) models with automated calibration and animal detection methods. Our pipeline uses deep learning based MDEs, including Dense Prediction Transformers (DPT), MiDaS 3.1, DepthAnything, DepthPro and UniDepthV2, along with multiple calibration methods such as linear, polynomial, and piecewise regression, to improve distance estimation accuracy. We introduce an automated mask generation and cross-camera calibration process to reduce manual effort. The proposed pipeline was validated using controlled ground truth data collected in Oxfordshire, UK, and subsequently tested on real-world wildlife data from the Bubye Valley Conservancy, Zimbabwe. Our proposed technique using UniDepthV2 MDE and piecewise linear regression for calibration reduces overall distance estimation error by up to 35% compared to existing approaches. Furthermore, we implemented height estimation as an indirect validation mechanism, presenting a correlation between true and estimated heights for different animals. Our fully automated pipeline advances camera trap-based wildlife monitoring, reducing human effort while improving scalability and reliability for conservation research.</p></details>
+        <details><summary>BibTeX</summary><pre class="bib">@article{aamir2025robust,
+  title   = {A robust metric distance and height estimation pipeline for wildlife camera trap imagery},
+  author  = {Aamir, Muhammad and Wijers, Matthew and Loveridge, Andrew and Markham, Andrew},
+  journal = {Ecological Informatics},
+  volume  = {92},
+  pages   = {103520},
+  year    = {2025},
+  doi     = {10.1016/j.ecoinf.2025.103520}
+}</pre></details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Team</div>
+      <h2>People</h2>
+      <p class="lead">MorphoCam is a collaboration between the Wildlife Conservation Research Unit (WildCRU) in Oxford's Department of Biology and the Department of Computer Science, with partners in South Africa and the UK.</p>
+    </div>
+    <div class="people">
+      <div class="person"><img class="avatar" src="assets/img/people/andrew-loveridge.jpg" alt="Andrew Loveridge" loading="lazy"><div><b>Prof. Andrew Loveridge</b><span>Principal Investigator</span><em>WildCRU, Department of Biology, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/andrew-markham.jpg" alt="Andrew Markham" loading="lazy"><div><b>Prof. Andrew Markham</b><span>Co-Investigator</span><em>Department of Computer Science, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/matthew-wijers.jpg" alt="Matthew Wijers" loading="lazy"><div><b>Dr Matthew Wijers</b><span>Postdoctoral Research Associate</span><em>WildCRU, Department of Biology, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/muhammad-aamir.jpg" alt="Muhammad Aamir" loading="lazy"><div><b>Dr Muhammad Aamir</b><span>Research Fellow &amp; lead developer</span><em>Department of Computer Science, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/sangyun-shin.jpg" alt="Sangyun Shin" loading="lazy"><div><b>Dr Sangyun Shin</b><span>Researcher, 3D perception &amp; datasets</span><em>Department of Computer Science, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/jiaxing-zhong.jpg" alt="Jia-Xing Zhong" loading="lazy"><div><b>Dr Jia-Xing Zhong</b><span>Collaborator, WildDepth</span><em>Department of Computer Science, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/xinyu-hou.jpg" alt="Xinyu Hou" loading="lazy"><div><b>Dr Xinyu Hou</b><span>Collaborator, WildDepth</span><em>Department of Computer Science, University of Oxford</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/naoya-muramatsu.jpg" alt="Naoya Muramatsu" loading="lazy"><div><b>Naoya Muramatsu</b><span>Collaborator, WildPose &amp; WildDepth</span><em>University of Cape Town</em></div></div>
+      <div class="person"><img class="avatar" src="assets/img/people/amir-patel.jpg" alt="Amir Patel" loading="lazy"><div><b>Prof. Amir Patel</b><span>Collaborator, WildPose &amp; WildDepth</span><em>University of Cape Town &amp; University College London</em></div></div>
+    </div>
+
+    <h3 style="margin-top:44px">Partners &amp; funding</h3>
+    <div class="partners">
+      <div class="partner"><b><a href="https://www.wildcru.org/projects/morphocam/" target="_blank" rel="noopener">WildCRU</a></b><span>Wildlife Conservation Research Unit, Department of Biology, University of Oxford. Project lead.</span></div>
+      <div class="partner"><b><a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Oxford Computer Science</a></b><span>Department of Computer Science, University of Oxford. Computer vision and software.</span></div>
+      <div class="partner"><b><a href="https://wildeyeconservation.org/" target="_blank" rel="noopener">WildEye Conservation</a></b><span>South Africa. TrapTagger integration and user interfaces.</span></div>
+      <div class="partner"><b><a href="https://gtr.ukri.org/projects?ref=UKRI037" target="_blank" rel="noopener">NERC / UKRI</a></b><span>Natural Environment Research Council grant UKRI037, May 2024 – April 2027.</span></div>
+      <div class="partner"><b>Field sites</b><span>Bubye Valley Conservancy (Zimbabwe), Longleat Safari Park (UK), Kgalagadi Transfrontier Park (South Africa).</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">News &amp; timeline</div>
+      <h2>Progress</h2>
+    </div>
+    <div class="grid grid-2" style="align-items:start">
+      <ul class="timeline">
+        <li><time>October 2026</time><p>WildDepth-v2 preprint released on arXiv, adding imaging radar, a hidden benchmark and metric 3D tracking. Code published in the wilddepth_v2 repository.</p></li>
+        <li><time>September 2026</time><p>WildDepth presented at ECCV 2026 in Malmö, Sweden, and published in Lecture Notes in Computer Science. Dataset downloads released on Zenodo.</p></li>
+        <li><time>July 2026</time><p>Gait-based individual identification preprint released on arXiv and submitted to <em>Methods in Ecology and Evolution</em>.</p></li>
+        <li><time>November 2025</time><p>The metric distance and height estimation pipeline published open access in <em>Ecological Informatics</em>, with the Depth-Estimation software released on GitHub.</p></li>
+        <li><time>2025</time><p>Ground-truth calibration imagery collected at Tubney House, Oxfordshire. MorphoCam LiDAR units deployed in Bubye Valley, Zimbabwe; recordings at Longleat Safari Park, UK.</p></li>
+        <li><time>2024</time><p>Project presented to Department of Biology postgraduate students; community consultation with camera trap researchers begins.</p></li>
+        <li><time>1 May 2024</time><p>Oxford Computer Science announces NERC funding: <a href="https://www.cs.ox.ac.uk/news/2316-full.html" target="_blank" rel="noopener">New funding will leverage AI to analyse camera trap images</a>.</p></li>
+        <li><time>April 2024</time><p>MorphoCam begins at WildCRU with NERC grant UKRI037, running to April 2027.</p></li>
+      </ul>
+      <div>
+        <div class="gallery" style="grid-template-columns:1fr 1fr">
+          <figure><img src="assets/img/ctrap-lion.jpg" alt="Camera trap image of a young lion" loading="lazy"><figcaption>Young lion, camera trap (WildCRU)</figcaption></figure>
+          <figure><img src="assets/img/ctrap-hyena.jpg" alt="Camera trap image of a spotted hyena" loading="lazy"><figcaption>Spotted hyena, camera trap (WildCRU)</figcaption></figure>
+          <figure><img src="assets/img/ctrap-porcupine.jpg" alt="Camera trap image of a porcupine" loading="lazy"><figcaption>Porcupine, camera trap (WildCRU)</figcaption></figure>
+          <figure><img src="assets/img/longleat-recording.jpg" alt="Recording animals with the RGB and LiDAR rig from a vehicle at Longleat" loading="lazy"><figcaption>Recording from a vehicle, Longleat</figcaption></figure>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <b>Get involved.</b> MorphoCam is designed around the needs of camera trap practitioners. If you run camera trap surveys and would like to test the tools on your data, or you have feature requests, open an issue on <a href="https://github.com/Morphocam" target="_blank" rel="noopener">GitHub</a> or contact the team via <a href="https://www.wildcru.org/contact/" target="_blank" rel="noopener">WildCRU</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b style="color:var(--ink)">MorphoCam</b> · Adding depth to camera trap analyses<br>
+      Wildlife Conservation Research Unit, Department of Biology &amp; Department of Computer Science, University of Oxford<br>
+      Funded by the Natural Environment Research Council (NERC), UKRI037.
+    </div>
+    <div>
+      <a href="https://github.com/Morphocam" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.wildcru.org/projects/morphocam/" target="_blank" rel="noopener">WildCRU project page</a> ·
+      <a href="https://yunshin.github.io/WildDepth/" target="_blank" rel="noopener">WildDepth</a> ·
+      <a href="https://gtr.ukri.org/projects?ref=UKRI037" target="_blank" rel="noopener">UKRI Gateway to Research</a><br>
+      Photos © WildCRU and the WildDepth team. Code released under the MIT licence.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
