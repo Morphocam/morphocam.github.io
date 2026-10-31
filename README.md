@@ -28,19 +28,15 @@ python3 -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-The repository `Morphocam/morphocam.github.io` already exists. Push this folder to its
-`main` branch and GitHub Pages serves it at https://morphocam.github.io automatically.
-
-```bash
-git remote add origin git@github.com:Morphocam/morphocam.github.io.git
-git push -u origin main --force   # the remote only holds a placeholder README
-```
+GitHub Pages serves the `main` branch of `Morphocam/morphocam.github.io` at https://morphocam.github.io, so a merged pull request goes live automatically.
 
 If Pages is not enabled: Settings → Pages → Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
 
 ## Updating
 
-- **New paper:** add an `<article class="pub">` block in the Publications section of `index.html`
-  and an entry in `papers.bib`.
+Changes go in through a pull request against `main`. Without write access to the Morphocam organisation, fork the repository and open the pull request from the fork.
+
+- **New paper:** add an `<article class="pub">` block in the Publications section of `index.html` and an entry in `papers.bib`, then update the paper count in the stats bar.
 - **New repository:** add a `.card` in the Software section.
+- **Team photo:** a square 320×320 JPEG in `assets/img/people/`, named `firstname-lastname.jpg`.
 - **Images:** drop JPEGs into `assets/img/` (keep them under ~500 KB).

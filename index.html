@@ -64,7 +64,7 @@
 <div class="wrap">
   <div class="stats" aria-label="Project at a glance">
     <div class="stat"><b>2024–2027</b><span>NERC research grant UKRI037</span></div>
-    <div class="stat"><b>4</b><span>peer-reviewed papers &amp; preprints</span></div>
+    <div class="stat"><b>5</b><span>peer-reviewed papers &amp; preprints</span></div>
     <div class="stat"><b>5</b><span>open-source repositories (MIT)</span></div>
     <div class="stat"><b>127k+</b><span>synchronised RGB–LiDAR frames released</span></div>
     <div class="stat"><b>3</b><span>field sites in the UK, Zimbabwe &amp; South Africa</span></div>
@@ -205,7 +205,7 @@
       <tbody>
         <tr><td><b>Bubye Valley Conservancy</b></td><td>Zimbabwe</td><td>6 species including giraffe, zebra and warthog; 84,700 synchronised frames from stationary MorphoCam units</td><td>RGB + Livox Mid-70 LiDAR</td><td><a href="https://zenodo.org/records/19371340" target="_blank" rel="noopener">Part 1 (46 GB)</a> · <a href="https://zenodo.org/records/19372084" target="_blank" rel="noopener">Part 2 (38 GB)</a></td></tr>
         <tr><td><b>Longleat Safari Park</b></td><td>United Kingdom</td><td>10+ species with diverse body morphologies in a controlled setting; 42,500 synchronised frames</td><td>RGB + Livox Avia LiDAR</td><td><a href="https://zenodo.org/records/19103277" target="_blank" rel="noopener">v1 (42 GB)</a> · <a href="https://zenodo.org/records/19152060" target="_blank" rel="noopener">v2 Part 1 (38 GB)</a> · <a href="https://zenodo.org/records/19154614" target="_blank" rel="noopener">v2 Part 2 (21 GB)</a></td></tr>
-        <tr><td><b>Kgalagadi Transfrontier Park</b></td><td>South Africa</td><td>Apex predators and large herbivores (lion, cheetah, leopard, springbok, gemsbok) from a 13-day survey with the vehicle-mounted WildPose system</td><td>Zoom RGB + LiDAR</td><td><a href="https://u.pcloud.link/publink/show?code=kZVhY95ZsvWD5u82A5bEHCMM6mF9gLqq62EX" target="_blank" rel="noopener">Raw data</a> · <a href="https://youtube.com/playlist?list=PLB9Pwo4Wnh7XQg2RmqRyzIzcOIjPWBh_O" target="_blank" rel="noopener">Videos</a></td></tr>
+        <tr><td><b>Kgalagadi Transfrontier Park</b></td><td>South Africa</td><td>Apex predators and large herbivores (lion, cheetah, leopard, springbok, gemsbok) from a 13-day survey with the vehicle-mounted <a href="https://doi.org/10.1242/jeb.249987" target="_blank" rel="noopener">WildPose</a> system</td><td>Zoom RGB + LiDAR</td><td><a href="https://u.pcloud.link/publink/show?code=kZVhY95ZsvWD5u82A5bEHCMM6mF9gLqq62EX" target="_blank" rel="noopener">Raw data</a> · <a href="https://youtube.com/playlist?list=PLB9Pwo4Wnh7XQg2RmqRyzIzcOIjPWBh_O" target="_blank" rel="noopener">Videos</a></td></tr>
         <tr><td><b>WildDepth-v2 radar subset</b></td><td>United Kingdom</td><td>37 RGB–LiDAR–4D radar sequences (19,716 frames) with per-point Doppler velocity, metric 3D animal trajectories and a hidden benchmark test set</td><td>RGB + LiDAR + imaging radar</td><td><a href="https://arxiv.org/abs/2610.31123" target="_blank" rel="noopener">Preprint</a> · <a href="https://github.com/Morphocam/wilddepth_v2" target="_blank" rel="noopener">Code</a></td></tr>
         <tr><td><b>Calibration ground truth</b></td><td>United Kingdom</td><td>Ground-truth imagery for validating monocular depth estimation models outdoors, collected at WildCRU's research base at Tubney House, Oxfordshire</td><td>Camera trap RGB</td><td><a href="https://doi.org/10.1016/j.ecoinf.2025.103520" target="_blank" rel="noopener">Described in paper</a></td></tr>
       </tbody>
@@ -317,6 +317,33 @@
 }</pre></details>
       </div>
     </article>
+
+    <article class="pub">
+      <div class="year">2025<small>Journal</small></div>
+      <div>
+        <h3>WildPose: a long-range 3D wildlife motion capture system</h3>
+        <div class="authors">Naoya Muramatsu, Sangyun Shin, Qianyi Deng, Andrew Markham, Amir Patel</div>
+        <div class="venue"><em>Journal of Experimental Biology</em>, Volume 228, Issue 5, JEB249987, March 2025. The first study of the Oxford–Cape Town collaboration.</div>
+        <div class="links">
+          <a class="chip" href="https://doi.org/10.1242/jeb.249987" target="_blank" rel="noopener">DOI 10.1242/jeb.249987</a>
+          <a class="chip" href="https://doi.org/10.1101/2024.02.05.578861" target="_blank" rel="noopener">bioRxiv preprint</a>
+          <a class="chip" href="https://denden047.github.io/wildpose" target="_blank" rel="noopener">Project page</a>
+          <a class="chip" href="https://github.com/DenDen047/WildPose_v1.1" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="https://u.pcloud.link/publink/show?code=kZdoxE0Z9rRj956ptaH6h0Btymik4X0jtGm7" target="_blank" rel="noopener">Data</a>
+        </div>
+        <details><summary>Abstract</summary><p class="abstract">Understanding and monitoring wildlife behavior is crucial in ecology and biomechanics, yet challenging because of the limitations of current methods. To address this issue, we introduce WildPose, a novel long-range motion capture system specifically tailored for free-ranging wildlife observation. This system combines an electronically controllable zoom-lens camera with a LiDAR to capture both 2D videos and 3D point cloud data, thereby allowing researchers to observe high-fidelity animal morphometrics, behavior and interactions in a completely remote manner. Field trials conducted in Kgalagadi Transfrontier Park (South Africa) have successfully demonstrated WildPose's ability to quantify morphological features of different species, accurately track the 3D movements of a springbok herd over time, and observe the respiratory patterns of a distant lion. By facilitating non-intrusive, long-range 3D data collection, WildPose marks a significant complementary technique in ecological and biomechanical studies, offering new possibilities for conservation efforts and animal welfare, and enriching the prospects for interdisciplinary research.</p></details>
+        <details><summary>BibTeX</summary><pre class="bib">@article{muramatsu2025wildpose,
+  title   = {WildPose: a long-range 3D wildlife motion capture system},
+  author  = {Muramatsu, Naoya and Shin, Sangyun and Deng, Qianyi and Markham, Andrew and Patel, Amir},
+  journal = {Journal of Experimental Biology},
+  volume  = {228},
+  number  = {5},
+  pages   = {JEB249987},
+  year    = {2025},
+  doi     = {10.1242/jeb.249987}
+}</pre></details>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -363,6 +390,7 @@
         <li><time>July 2026</time><p>Gait-based individual identification preprint released on arXiv and submitted to <em>Methods in Ecology and Evolution</em>.</p></li>
         <li><time>November 2025</time><p>The metric distance and height estimation pipeline published open access in <em>Ecological Informatics</em>, with the Depth-Estimation software released on GitHub.</p></li>
         <li><time>2025</time><p>Ground-truth calibration imagery collected at Tubney House, Oxfordshire. MorphoCam LiDAR units deployed in Bubye Valley, Zimbabwe; recordings at Longleat Safari Park, UK.</p></li>
+        <li><time>March 2025</time><p>WildPose, the first study of the Oxford–Cape Town collaboration, published in the <em>Journal of Experimental Biology</em>. Its long-range zoom camera and LiDAR system recorded wildlife in the Kgalagadi Transfrontier Park, South Africa.</p></li>
         <li><time>2024</time><p>Project presented to Department of Biology postgraduate students; community consultation with camera trap researchers begins.</p></li>
         <li><time>1 May 2024</time><p>Oxford Computer Science announces NERC funding: <a href="https://www.cs.ox.ac.uk/news/2316-full.html" target="_blank" rel="noopener">New funding will leverage AI to analyse camera trap images</a>.</p></li>
         <li><time>April 2024</time><p>MorphoCam begins at WildCRU with NERC grant UKRI037, running to April 2027.</p></li>
